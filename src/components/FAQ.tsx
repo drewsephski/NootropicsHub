@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Search } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
@@ -48,24 +48,11 @@ const FAQSection = () => {
   })).filter(category => category.questions.length > 0);
 
   return (
-    <section className="py-16 px-4">
+    <section className="py-80 px-4">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8">
+        <h2 className="text-3xl font-bold text-center mt-28">
           Frequently Asked Questions
         </h2>
-
-        {/* Search Bar */}
-        <div className="relative mb-8">
-          <input
-            type="text"
-            placeholder="Search questions..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="input-field pl-12"
-          />
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-        </div>
-
         {/* FAQ Items */}
         <div className="space-y-8">
           {filteredFaqs.map((category) => (
