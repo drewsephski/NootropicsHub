@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-b from-[#0A192F] to-gray-900 text-gray-100 min-h-screen;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-blue-600 rounded-lg font-semibold 
+           transition-all duration-300 ease-out
+           hover:scale-105 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]
+           active:scale-95;
+  }
+
+  .nav-link {
+    @apply relative text-gray-300 hover:text-white
+           after:absolute after:bottom-0 after:left-0 
+           after:w-full after:h-0.5 after:bg-blue-500
+           after:transform after:scale-x-0 after:origin-left
+           after:transition-transform after:duration-300
+           hover:after:scale-x-100;
+  }
+
+  .card {
+    @apply bg-gray-800/50 backdrop-blur-sm rounded-xl
+           transform transition-all duration-300 ease-out
+           hover:shadow-xl hover:shadow-blue-500/20
+           perspective-1000;
+  }
+
+  .card-inner {
+    @apply relative w-full h-full transform-gpu transition-transform duration-500
+           transform-style-preserve-3d;
+  }
+
+  .card-front,
+  .card-back {
+    @apply absolute w-full h-full backface-hidden p-6;
+  }
+
+  .card-back {
+    @apply transform rotateY-180;
+  }
+
+  .social-icon {
+    @apply text-gray-400 hover:text-blue-500 transition-colors duration-300
+           transform hover:scale-110;
+  }
+
+  .faq-item {
+    @apply border-b border-gray-700 last:border-b-0;
+  }
+
+  .faq-question {
+    @apply py-4 px-6 flex justify-between items-center cursor-pointer
+           hover:bg-gray-800/30 transition-colors duration-300;
+  }
+
+  .faq-answer {
+    @apply px-6 py-4 bg-gray-800/20;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 bg-gray-800/50 rounded-lg
+           border border-gray-700 focus:border-blue-500
+           focus:ring-2 focus:ring-blue-500/20
+           transition-all duration-300;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Ripple Effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 1s;
+}
+
+.ripple:active:after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  @apply fixed w-8 h-8 pointer-events-none z-50
+         border-2 border-blue-500 rounded-full
+         transform -translate-x-1/2 -translate-y-1/2
+         transition-transform duration-100 ease-out;
+}
+
+/* Utility Classes */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotateY-180 {
+  transform: rotateY(180deg);
+}
+
+/* Newsletter Form */
+.newsletter-form {
+  @apply max-w-md mx-auto p-6 bg-gray-800/50 rounded-xl
+         backdrop-blur-sm border border-gray-700;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  @apply fixed bottom-8 right-8 p-3 bg-blue-500 rounded-full
+         shadow-lg hover:bg-blue-600 transition-colors duration-300
+         opacity-0 pointer-events-none;
+}
+
+.back-to-top.visible {
+  @apply opacity-100 pointer-events-auto;
+}
